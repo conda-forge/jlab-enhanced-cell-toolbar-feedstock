@@ -1,5 +1,5 @@
 {% set name = "jlab-enhanced-cell-toolbar" %}
-{% set version = "3.1.1" %}
+{% set version = "3.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 2313f75a5e63cf87b9ddcb6a1bcda9c2db6d99153525c66097806506cc8ce560
+  sha256: 2a8ed6c25a1e2542b1ed8d2727580d1cc5aba97180819c21e5c244603f8765eb
 
 build:
   noarch: python
