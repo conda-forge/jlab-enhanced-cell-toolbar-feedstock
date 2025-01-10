@@ -6,30 +6,31 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: a34cc58e2619d74f4287a80057bdc54fc6bf775afbbd6133ef21b7a6c1e36758
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
     - nodejs >=12.0.0
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
     - jupyterlab >=3.1,<4
     - jupyter-packaging >=0.10.0,<2.0.0
   run:
-    - python >=3.7
+    - python >={{ python_min }}
 
 test:
   requires:
     - nodejs >=12.0.0
     - jupyterlab >=3.1,<4
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
     - jupyter labextension list 2>&1 | grep -ie "@jlab-enhanced/cell-toolbar.*OK"
